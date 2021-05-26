@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { itemContext, filterType } from "./context";
+import { itemContext, filterContext } from "./context";
+import { filterType, itemStatus } from "./constants";
 import Header from "./components/Header";
-import ItemInput from "./components/atoms/ItemInput";
+import ItemInput from "./components/ItemInput";
 import ItemList from "./components/ItemList";
-import ToggleButton from "./components/atoms/ToggleButton";
+import ItemInteractButtons from "./components/ItemInteractButtons";
 import Filter from "./components/Filter";
 import { v4 } from "uuid";
 
@@ -12,22 +13,22 @@ const sampleItems = [
     {
         id: v4(),
         name: "todo item 1",
-        status: "active"
+        status: "ACTIVE"
     },
     {
         id: v4(),
         name: "todo item 2",
-        status: "done"
+        status: "DONE"
     },
     {
         id: v4(),
         name: "todo item 3",
-        status: "active"
+        status: "ACTIVE"
     },
     {
         id: v4(),
         name: "todo item 4",
-        status: "active"
+        status: "ACTIVE"
     }
 ];
 
@@ -36,7 +37,7 @@ export default function App() {
     const [filter, setFilter] = useState(filterType.all);
 
     const onAddItem = (name) => {
-        const newItem = { id: v4(), name: name, status: "active" };
+        const newItem = { id: v4(), name: name, status: itemStatus.ACTIVE };
         setItems((prevItems) => {
             let newItems = [...prevItems];
             newItems.push(newItem);
@@ -48,15 +49,28 @@ export default function App() {
         setItems((prevItems) => prevItems.filter((item) => item.id !== id));
     };
 
+    const onRemoveAll = () => {
+        setItems([]);
+    };
+
+    const onRemoveDone = () => {
+        setItems((prevItems) => {
+            return [...prevItems].filter(
+                (item) => item.status === itemStatus.ACTIVE
+            );
+        });
+    };
+
     const onToggleItem = (id) => {
         setItems((prevItems) =>
             prevItems.map((item) => {
                 const newStatus =
                     item.id === id
-                        ? item.status === "active"
-                            ? "done"
-                            : "active"
+                        ? item.status === itemStatus.ACTIVE
+                            ? itemStatus.DONE
+                            : itemStatus.ACTIVE
                         : item.status;
+                console.log(newStatus);
                 return { ...item, status: newStatus };
             })
         );
@@ -72,33 +86,36 @@ export default function App() {
         );
     };
 
-    const showDoneItems = () => items.filter((item) => item.status === "done");
+    const showDoneItems = () =>
+        items.filter((item) => item.status === itemStatus.DONE);
 
     const showActiveItems = () =>
-        items.filter((item) => item.status === "active");
+        items.filter((item) => item.status === itemStatus.ACTIVE);
 
     return (
         <itemContext.Provider
             value={{
                 items,
-                filter,
                 onAddItem,
                 onRemoveItem,
+                onRemoveAll,
+                onRemoveDone,
                 onToggleItem,
                 showDoneItems,
-                showActiveItems,
-                chooseFilter
+                showActiveItems
             }}
         >
-            <div className="App">
-                <Header />
-                <div className="container">
-                    <ItemInput />
-                    <ItemList />
-                    <ToggleButton />
-                    <Filter />
+            <filterContext.Provider value={{ filter, chooseFilter }}>
+                <div className="App">
+                    <Header />
+                    <div className="container">
+                        <ItemInput />
+                        <ItemList />
+                        <ItemInteractButtons />
+                        <Filter />
+                    </div>
                 </div>
-            </div>
+            </filterContext.Provider>
         </itemContext.Provider>
     );
 }

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { itemContext } from "../../context";
+import { itemContext } from "../context";
 
 export default function ItemInput() {
     const [name, setName] = useState("");
     const { onAddItem } = React.useContext(itemContext);
     const onEnterName = (e) => {
         if (e.key === "Enter") {
+            if (name.length === 0) {
+                alert("Name should not empty !");
+                return;
+            }
             onAddItem(name);
             setName("");
         }

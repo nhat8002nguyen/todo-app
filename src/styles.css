@@ -65,6 +65,7 @@
 .itemList {
     height: 400px;
     width: 100%;
+    margin-top: 20px;
     overflow-y: scroll;
 }
 
@@ -103,10 +104,15 @@
 }
 
 /* toggle button and filter buttons  */
+.itemInteractButton {
+    display: flex;
+    gap: 20px;
+}
+
 .toggleButton {
     width: 100px;
     height: 50px;
-    margin: 20px 100px auto 50px;
+    margin: 20px auto auto 50px;
     font-size: 16px;
     color: white;
     background-color: var(--primary);

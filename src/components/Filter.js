@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { itemContext, filterType } from "../context";
+import { filterContext } from "../context";
+import { filterType } from "../constants";
 
 export default function Filter() {
-    const { filter, chooseFilter } = useContext(itemContext);
+    const { filter, chooseFilter } = useContext(filterContext);
 
     return (
         <div className="filterButtons">

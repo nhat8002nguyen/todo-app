@@ -1,9 +1,11 @@
 import React from "react";
 import TodoItem from "./elements/TodoItem";
-import { itemContext, filterType } from "../context";
+import { itemContext, filterContext } from "../context";
+import { filterType, itemStatus } from "../constants";
 
 export default function ItemList() {
-    const { items, filter } = React.useContext(itemContext);
+    const { items } = React.useContext(itemContext);
+    const { filter } = React.useContext(filterContext);
     const [displayedItems, setDisplayedItems] = React.useState(items);
 
     // chnage list of items when change filter, add and remove item
@@ -12,9 +14,13 @@ export default function ItemList() {
         if (filter === filterType.all) {
             showedItems = items;
         } else if (filter === filterType.done) {
-            showedItems = items.filter((item) => item.status === "done");
+            showedItems = items.filter(
+                (item) => item.status === itemStatus.DONE
+            );
         } else {
-            showedItems = items.filter((item) => item.status === "active");
+            showedItems = items.filter(
+                (item) => item.status === itemStatus.ACTIVE
+            );
         }
         setDisplayedItems(showedItems);
     }, [filter, items]);
