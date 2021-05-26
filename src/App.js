@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./styles.css";
-import { itemContext, filterType } from "./Context";
+import { itemContext, filterType } from "./context";
 import Header from "./components/Header";
 import ItemInput from "./components/atoms/ItemInput";
 import ItemList from "./components/ItemList";
