@@ -1,0 +1,144 @@
+:root {
+    --primary: #4b7bc9;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    font-family: "Raleway", sans-serif;
+}
+
+.container {
+    width: 500px;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 50px;
+}
+
+.header {
+    font-size: 24px;
+    color: var(--primary);
+    margin: auto;
+}
+
+/* list of items */
+.itemInput {
+    font-size: 24px;
+    border: none;
+    width: 70%;
+    height: 30px;
+    border-bottom: 1px solid var(--primary);
+    padding-bottom: 5px;
+    margin-left: 50px;
+}
+
+.itemInput:focus {
+    outline: none;
+    border-bottom: 2px solid var(--primary);
+    transform: scale(1.1);
+}
+
+.itemList {
+    height: 400px;
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.todoItem {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    justify-content: space-around;
+    margin-top: 5px;
+    font-size: 24px;
+}
+
+.todoItem input[type="checkbox"] {
+    color: var(--primary);
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-color: white;
+    margin: auto;
+}
+
+.itemName {
+    width: 300px;
+}
+
+.todoItem img {
+    width: 40px;
+    cursor: pointer;
+    opacity: 60%;
+    margin-right: 30px;
+}
+
+.todoItem img:hover {
+    opacity: 1;
+}
+
+/* toggle button and filter buttons  */
+.toggleButton {
+    width: 100px;
+    height: 50px;
+    margin: 20px 100px auto 50px;
+    font-size: 16px;
+    color: white;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toggleButton:hover {
+    transform: scale(1.05);
+}
+
+.toggleButton:active {
+    opacity: 0.5;
+}
+
+.filterButtons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+    align-items: center;
+    gap: 20px;
+    justify-content: space-around;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+
+.filterButton {
+    width: 100px;
+    height: 50px;
+    border: 1px solid grey;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.filterButtons p {
+    font-size: 32px;
+}
+
+.filterButton:hover {
+    background-color: green;
+    color: white;
+    border: none;
+}
+
+.filterButton:active {
+    opacity: 0.5;
+}
+
+.filterButtonChose {
+    background-color: green;
+    color: white;
+    border: none;
+}
