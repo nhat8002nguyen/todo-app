@@ -28,7 +28,10 @@ export default function TodoItem(props) {
                     onChange={() => checkItem()}
                 />
             </div>
-            <div className="itemName">
+            <div
+                className="itemName"
+                style={{ textDecoration: checked && "line-through" }}
+            >
                 <p>{props.name}</p>
             </div>
             <img
