@@ -7,7 +7,6 @@ import ItemList from "./components/ItemList";
 import ToggleButton from "./components/atoms/ToggleButton";
 import Filter from "./components/Filter";
 import { v4 } from "uuid";
-import { writeItemData, getItems } from "./firebase/database";
 
 const sampleItems = [
     {
@@ -36,20 +35,12 @@ export default function App() {
     const [items, setItems] = useState(sampleItems);
     const [filter, setFilter] = useState(filterType.all);
 
-    console.log(getItems());
-
     const onAddItem = (name) => {
-        // const newItem = { id: v4(), name: name, status: "active" };
-        // setItems((prevItems) => {
-        //     let newItems = [...prevItems];
-        //     newItems.push(newItem);
-        //     return newItems;
-        // });
-
-        writeItemData({
-            id: v4(),
-            name: name,
-            status: "active"
+        const newItem = { id: v4(), name: name, status: "active" };
+        setItems((prevItems) => {
+            let newItems = [...prevItems];
+            newItems.push(newItem);
+            return newItems;
         });
     };
 
