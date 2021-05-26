@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { itemContext } from "../../Context";
+import { itemContext } from "../../context";
 
 export default function ItemInput() {
     const [name, setName] = useState("");

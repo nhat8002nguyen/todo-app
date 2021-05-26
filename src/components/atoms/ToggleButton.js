@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { itemContext, filterType } from "../../Context";
+import { itemContext, filterType } from "../../context";
 
 export default function ToggleButton() {
     const { items, filter, onToggleItem } = useContext(itemContext);

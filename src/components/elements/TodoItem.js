@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import removeIcon from "../../assets/images/remove.png";
-import { itemContext } from "../../Context";
+import { itemContext } from "../../context";
 
 export default function TodoItem(props) {
     const [checked, setChecked] = React.useState(

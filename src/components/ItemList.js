@@ -1,6 +1,6 @@
 import React from "react";
 import TodoItem from "./elements/TodoItem";
-import { itemContext, filterType } from "../Context";
+import { itemContext, filterType } from "../context";
 
 export default function ItemList() {
     const { items, filter } = React.useContext(itemContext);
