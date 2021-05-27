@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import removeIcon from "../../assets/images/remove.png";
+import removeIcon from "../../assets/images/remove.svg";
 import { itemStatus } from "../../constants";
 import { itemContext } from "../../context";
 
