@@ -1,18 +1,20 @@
 import React from "react";
-
-export const filterType = {
-    all: "all",
-    done: "done",
-    active: "active"
-};
+import { filterType } from "../constants";
 
 export const itemContext = React.createContext({
     items: [],
-    filter: filterType.all,
+    // filter: filterType.all,
     onAddItem: () => [],
     onRemoveItem: () => [],
+    onRemoveAll: () => [],
+    onRemoveDone: () => [],
     onToggleItem: () => [],
     showDoneItems: () => [],
-    showActiveItems: () => [],
+    showActiveItems: () => []
+    // chooseFilter: () => {}
+});
+
+export const filterContext = React.createContext({
+    filter: filterType.all,
     chooseFilter: () => {}
 });

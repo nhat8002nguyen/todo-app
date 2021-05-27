@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import removeIcon from "../../assets/images/remove.png";
+import { itemStatus } from "../../constants";
 import { itemContext } from "../../context";
 
 export default function TodoItem(props) {
@@ -16,7 +17,7 @@ export default function TodoItem(props) {
     useEffect(() => {
         const item = items.find((item) => item.id === props.id);
         if (!item) return false;
-        setChecked(item.status === "active" ? false : true);
+        setChecked(item.status === itemStatus.ACTIVE ? false : true);
     }, [items]);
 
     return (
